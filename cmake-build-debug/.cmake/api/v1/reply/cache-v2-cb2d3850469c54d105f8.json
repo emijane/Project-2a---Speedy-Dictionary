@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/russe/OneDrive - University of Florida/COP 3530 - DSA/Project2/cmake-build-debug"
+			"value" : "c:/Users/russe/Repositories/School/DSA_Project2/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -575,7 +575,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/russe/OneDrive - University of Florida/COP 3530 - DSA/Project2/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "C:/Users/russe/Repositories/School/DSA_Project2/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -647,7 +647,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/russe/OneDrive - University of Florida/COP 3530 - DSA/Project2"
+			"value" : "C:/Users/russe/Repositories/School/DSA_Project2"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -875,7 +875,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "Project2"
+			"value" : "DSA_Project2"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1270,6 +1270,42 @@
 			"value" : "FALSE"
 		},
 		{
+			"name" : "DSA_Project2_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "C:/Users/russe/Repositories/School/DSA_Project2/cmake-build-debug"
+		},
+		{
+			"name" : "DSA_Project2_IS_TOP_LEVEL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "ON"
+		},
+		{
+			"name" : "DSA_Project2_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "C:/Users/russe/Repositories/School/DSA_Project2"
+		},
+		{
 			"name" : "Project2_BINARY_DIR",
 			"properties" : 
 			[
@@ -1279,7 +1315,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/russe/OneDrive - University of Florida/COP 3530 - DSA/Project2/cmake-build-debug"
+			"value" : "C:/Users/russe/Repositories/School/DSA_Project2/cmake-build-debug"
 		},
 		{
 			"name" : "Project2_IS_TOP_LEVEL",
@@ -1303,7 +1339,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/russe/OneDrive - University of Florida/COP 3530 - DSA/Project2"
+			"value" : "C:/Users/russe/Repositories/School/DSA_Project2"
 		},
 		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",

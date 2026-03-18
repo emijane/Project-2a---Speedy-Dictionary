@@ -27,7 +27,7 @@
 					[
 						0
 					],
-					"name" : "Project2",
+					"name" : "DSA_Project2",
 					"targetIndexes" : 
 					[
 						0
@@ -38,9 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "Project2::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Project2-Debug-b92f5bf08d866a68e577.json",
-					"name" : "Project2",
+					"id" : "DSA_Project2::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-DSA_Project2-Debug-cd809b940838adf31a40.json",
+					"name" : "DSA_Project2",
 					"projectIndex" : 0
 				}
 			]
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/russe/OneDrive - University of Florida/COP 3530 - DSA/Project2/cmake-build-debug",
-		"source" : "C:/Users/russe/OneDrive - University of Florida/COP 3530 - DSA/Project2"
+		"build" : "C:/Users/russe/Repositories/School/DSA_Project2/cmake-build-debug",
+		"source" : "C:/Users/russe/Repositories/School/DSA_Project2"
 	},
 	"version" : 
 	{

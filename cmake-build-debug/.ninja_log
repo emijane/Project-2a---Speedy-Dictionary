@@ -1,20 +1,8 @@
 # ninja log v6
-43	673	7954779202479934	CMakeFiles/Project2.dir/rb_tree/red-black.cpp.obj	286bfd43717ef02f
-37	472	7954779353254706	CMakeFiles/Project2.dir/main.cpp.obj	3a94c15440a41437
-36	376	7954785118591140	build.ninja	ad0898c144365648
-46	695	7954776801613657	CMakeFiles/Project2.dir/csv_parsing/csv-importer.cpp.obj	1da66d8400661f4a
-472	574	7954779357605505	Project2.exe	c79f904c8a2e6b60
-23	1249	7954793512253620	CMakeFiles/Project2.dir/measurement/measurement.cpp.obj	19a49260bb196b9d
-13	1342	7954793512145634	CMakeFiles/Project2.dir/rb_tree/red-black.cpp.obj	d2f81c7b87c62276
-6	1347	7954793512081490	CMakeFiles/Project2.dir/main.cpp.obj	6fe4c55dc33a4f1
-17	1382	7954793512198578	CMakeFiles/Project2.dir/csv_parsing/csv-importer.cpp.obj	1a8715634394a93c
-1382	1478	7954793525840229	Project2.exe	60e879ad1761f713
-47	845	7954794131552159	CMakeFiles/Project2.dir/main.cpp.obj	6fe4c55dc33a4f1
-845	933	7954794139531652	Project2.exe	60e879ad1761f713
-45	864	7954794303996662	CMakeFiles/Project2.dir/main.cpp.obj	6fe4c55dc33a4f1
-864	952	7954794312181622	Project2.exe	60e879ad1761f713
-48	887	7954794377606377	CMakeFiles/Project2.dir/main.cpp.obj	6fe4c55dc33a4f1
-888	975	7954794386013903	Project2.exe	60e879ad1761f713
-47	919	7954794643676737	CMakeFiles/Project2.dir/main.cpp.obj	6fe4c55dc33a4f1
-52	950	7954794643728933	CMakeFiles/Project2.dir/rb_tree/red-black.cpp.obj	d2f81c7b87c62276
+31	402	7955713731770547	build.ninja	21b8079c7ba4be95
 950	1042	7954794652710553	Project2.exe	60e879ad1761f713
+37	1551	7955711821604870	CMakeFiles/DSA_Project2.dir/csv_parsing/csv-importer.cpp.obj	d0edf58bc2cdc731
+33	1614	7955711821564538	CMakeFiles/DSA_Project2.dir/rb_tree/red-black.cpp.obj	ae6b4cc44c837f90
+30	1532	7955711821534535	CMakeFiles/DSA_Project2.dir/main.cpp.obj	fc61f59fa9852609
+42	1553	7955711821654851	CMakeFiles/DSA_Project2.dir/measurement/measurement.cpp.obj	32e15848dca3c844
+1615	1953	7955711837383485	DSA_Project2.exe	2d0ea5428b40d01

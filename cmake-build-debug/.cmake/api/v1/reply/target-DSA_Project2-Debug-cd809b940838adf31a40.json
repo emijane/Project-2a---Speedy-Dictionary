@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "Project2.exe"
+			"path" : "DSA_Project2.exe"
 		},
 		{
-			"path" : "Project2.pdb"
+			"path" : "DSA_Project2.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -52,15 +52,15 @@
 			[
 				{
 					"backtrace" : 2,
-					"path" : "C:/Users/russe/OneDrive - University of Florida/COP 3530 - DSA/Project2/rb_tree"
+					"path" : "C:/Users/russe/Repositories/School/DSA_Project2/rb_tree"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "C:/Users/russe/OneDrive - University of Florida/COP 3530 - DSA/Project2/measurement"
+					"path" : "C:/Users/russe/Repositories/School/DSA_Project2/measurement"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "C:/Users/russe/OneDrive - University of Florida/COP 3530 - DSA/Project2/csv_parsing"
+					"path" : "C:/Users/russe/Repositories/School/DSA_Project2/csv_parsing"
 				}
 			],
 			"language" : "CXX",
@@ -81,7 +81,7 @@
 			]
 		}
 	],
-	"id" : "Project2::@6890427a1f51a3e7e1df",
+	"id" : "DSA_Project2::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -101,8 +101,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "Project2",
-	"nameOnDisk" : "Project2.exe",
+	"name" : "DSA_Project2",
+	"nameOnDisk" : "DSA_Project2.exe",
 	"paths" : 
 	{
 		"build" : ".",
