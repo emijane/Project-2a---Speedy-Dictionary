@@ -2,7 +2,7 @@ import React from 'react';
 
 export const SearchComparison: React.FC = () => {
     return (
-        <div className='max-w-3xl mt-10 pl-10'>
+        <div className='max-w-3xl mt-10 pl-20'>
             <h3 className="text-2xl font-semibold text-black">
                 Performance Comparison
             </h3>
