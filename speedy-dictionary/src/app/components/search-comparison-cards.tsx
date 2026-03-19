@@ -2,13 +2,13 @@ import React from 'react';
 
 export const SearchComparisonCards: React.FC = () => {
     return (
-        <div className="mt-5 grid gap-6 md:grid-cols-2 max-w-3xl mb-10">
+        <div className="mt-5 grid gap-6 md:grid-cols-2 max-w-3xl mb-10 pl-10">
             <div className="rounded-[28px] bg-gray-100 p-8 shadow-sm">
                 <h2 className="mb-3 text-xl font-semibold text-black">
                     Slower: Red-Black Tree
                 </h2>
 
-                <div className="text-lg text-black font-medium">
+                <div className="text-lg text-black ">
                     <p>
                         Levels searched: <span className="text-gray-600">20</span>
                     </p>
@@ -29,7 +29,7 @@ export const SearchComparisonCards: React.FC = () => {
                     Faster: B-Tree
                 </h2>
 
-                <div className="text-lg text-black font-medium">
+                <div className="text-lg text-black">
                     <p>
                         Levels searched: <span className="text-gray-600">4</span>
                     </p>

@@ -2,7 +2,7 @@ import React from 'react';
 
 export const Search: React.FC = () => {
     return (
-        <div className="my-10">
+        <div className="my-10 pl-10">
             <div className="max-w-3xl">
                 <input
                     type="text"
