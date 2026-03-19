@@ -2,21 +2,49 @@ import React from 'react';
 
 export const SearchComparison: React.FC = () => {
     return (
-        <div className='max-w-3xl mt-10 pl-20'>
-            <h3 className="text-2xl font-semibold text-black">
-                Performance Comparison
-            </h3>
+        <div className="mt-12 ml-20 not-first:max-w-4xl rounded-3xl border border-gray-200 bg-white p-8 shadow-sm">
+            <div className="space-y-2">
+                <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">
+                    Analysis
+                </p>
 
-            <div className="text-lg text-black mt-3">
-                <p className='font-medium'>
-                    Dataset: <span className="text-black/70 font-normal">1,000,000 English words + definitions</span>
+                <h3 className="text-3xl font-bold text-black">
+                    Performance Comparison
+                </h3>
+
+                <p className="max-w-2xl text-base leading-relaxed text-gray-600">
+                    A quick comparison of how Red-Black Trees and B-Trees perform when searching
+                    through a large English dictionary dataset.
                 </p>
-                <p className='font-medium'>
-                    Structures Compared: <span className="text-black/70 font-normal">Red-Black Trees vs B-Trees</span>
-                </p>
-                <p className='font-medium'>
-                    Time Complexity: <span className="text-black/70 font-normal">O(log n)</span>
-                </p>
+            </div>
+
+            <div className="mt-6 grid gap-4 sm:grid-cols-3">
+                <div className="rounded-2xl bg-gray-50 p-5">
+                    <p className="text-sm font-medium text-gray-500">
+                        Dataset
+                    </p>
+                    <p className="mt-2 text-lg font-semibold text-black">
+                        1,000,000 English words + definitions
+                    </p>
+                </div>
+
+                <div className="rounded-2xl bg-gray-50 p-5">
+                    <p className="text-sm font-medium text-gray-500">
+                        Structures Compared
+                    </p>
+                    <p className="mt-2 text-lg font-semibold text-black">
+                        Red-Black Trees vs B-Trees
+                    </p>
+                </div>
+
+                <div className="rounded-2xl bg-gray-50 p-5">
+                    <p className="text-sm font-medium text-gray-500">
+                        Time Complexity
+                    </p>
+                    <p className="mt-2 text-lg font-semibold text-black">
+                        O(log n)
+                    </p>
+                </div>
             </div>
         </div>
     );
