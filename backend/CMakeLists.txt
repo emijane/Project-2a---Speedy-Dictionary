@@ -3,13 +3,22 @@ project(backend)
 
 set(CMAKE_CXX_STANDARD 20)
 
-include_directories(rb_tree b_tree measurement csv_parsing)
+include_directories(rb_tree b_tree measurement csv_parsing server_libs)
 
 add_executable(backend main.cpp
         rb_tree/red-black.cpp
         rb_tree/red-black.h
         csv_parsing/csv-importer.cpp
         csv_parsing/csv-importer.h
-        measurement/measurement.cpp
-        measurement/measurement.h
+        server_libs/httplib.h
+)
+
+
+# Compatibility for httplib.h:
+
+target_link_libraries(backend ws2_32)
+
+add_compile_definitions(
+        _WIN32_WINNT=0x0A00
+        WINVER=0x0A00
 )
