@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: DSA_Project2
+# Project: backend
 # Configurations: Debug
 # =============================================================================
 
@@ -39,68 +39,64 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = C$:/Users/russe/Repositories/School/DSA_Project2/cmake-build-debug/
+cmake_ninja_workdir = C$:/Users/russe/Repositories/School/DSA_Project2/backend/cmake-build-debug/
 # =============================================================================
-# Object build statements for EXECUTABLE target DSA_Project2
+# Object build statements for EXECUTABLE target backend
 
 
 #############################################
-# Order-only phony target for DSA_Project2
+# Order-only phony target for backend
 
-build cmake_object_order_depends_target_DSA_Project2: phony || .
+build cmake_object_order_depends_target_backend: phony || .
 
-build CMakeFiles/DSA_Project2.dir/main.cpp.obj: CXX_COMPILER__DSA_Project2_unscanned_Debug C$:/Users/russe/Repositories/School/DSA_Project2/main.cpp || cmake_object_order_depends_target_DSA_Project2
-  DEP_FILE = CMakeFiles\DSA_Project2.dir\main.cpp.obj.d
+build CMakeFiles/backend.dir/main.cpp.obj: CXX_COMPILER__backend_unscanned_Debug C$:/Users/russe/Repositories/School/DSA_Project2/backend/main.cpp || cmake_object_order_depends_target_backend
+  DEFINES = -DWINVER=0x0A00 -D_WIN32_WINNT=0x0A00
+  DEP_FILE = CMakeFiles\backend.dir\main.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/russe/Repositories/School/DSA_Project2/rb_tree -IC:/Users/russe/Repositories/School/DSA_Project2/measurement -IC:/Users/russe/Repositories/School/DSA_Project2/csv_parsing
-  OBJECT_DIR = CMakeFiles\DSA_Project2.dir
-  OBJECT_FILE_DIR = CMakeFiles\DSA_Project2.dir
+  INCLUDES = -IC:/Users/russe/Repositories/School/DSA_Project2/backend/rb_tree -IC:/Users/russe/Repositories/School/DSA_Project2/backend/b_tree -IC:/Users/russe/Repositories/School/DSA_Project2/backend/measurement -IC:/Users/russe/Repositories/School/DSA_Project2/backend/csv_parsing -IC:/Users/russe/Repositories/School/DSA_Project2/backend/server_libs
+  OBJECT_DIR = CMakeFiles\backend.dir
+  OBJECT_FILE_DIR = CMakeFiles\backend.dir
 
-build CMakeFiles/DSA_Project2.dir/rb_tree/red-black.cpp.obj: CXX_COMPILER__DSA_Project2_unscanned_Debug C$:/Users/russe/Repositories/School/DSA_Project2/rb_tree/red-black.cpp || cmake_object_order_depends_target_DSA_Project2
-  DEP_FILE = CMakeFiles\DSA_Project2.dir\rb_tree\red-black.cpp.obj.d
+build CMakeFiles/backend.dir/rb_tree/red-black.cpp.obj: CXX_COMPILER__backend_unscanned_Debug C$:/Users/russe/Repositories/School/DSA_Project2/backend/rb_tree/red-black.cpp || cmake_object_order_depends_target_backend
+  DEFINES = -DWINVER=0x0A00 -D_WIN32_WINNT=0x0A00
+  DEP_FILE = CMakeFiles\backend.dir\rb_tree\red-black.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/russe/Repositories/School/DSA_Project2/rb_tree -IC:/Users/russe/Repositories/School/DSA_Project2/measurement -IC:/Users/russe/Repositories/School/DSA_Project2/csv_parsing
-  OBJECT_DIR = CMakeFiles\DSA_Project2.dir
-  OBJECT_FILE_DIR = CMakeFiles\DSA_Project2.dir\rb_tree
+  INCLUDES = -IC:/Users/russe/Repositories/School/DSA_Project2/backend/rb_tree -IC:/Users/russe/Repositories/School/DSA_Project2/backend/b_tree -IC:/Users/russe/Repositories/School/DSA_Project2/backend/measurement -IC:/Users/russe/Repositories/School/DSA_Project2/backend/csv_parsing -IC:/Users/russe/Repositories/School/DSA_Project2/backend/server_libs
+  OBJECT_DIR = CMakeFiles\backend.dir
+  OBJECT_FILE_DIR = CMakeFiles\backend.dir\rb_tree
 
-build CMakeFiles/DSA_Project2.dir/csv_parsing/csv-importer.cpp.obj: CXX_COMPILER__DSA_Project2_unscanned_Debug C$:/Users/russe/Repositories/School/DSA_Project2/csv_parsing/csv-importer.cpp || cmake_object_order_depends_target_DSA_Project2
-  DEP_FILE = CMakeFiles\DSA_Project2.dir\csv_parsing\csv-importer.cpp.obj.d
+build CMakeFiles/backend.dir/csv_parsing/csv-importer.cpp.obj: CXX_COMPILER__backend_unscanned_Debug C$:/Users/russe/Repositories/School/DSA_Project2/backend/csv_parsing/csv-importer.cpp || cmake_object_order_depends_target_backend
+  DEFINES = -DWINVER=0x0A00 -D_WIN32_WINNT=0x0A00
+  DEP_FILE = CMakeFiles\backend.dir\csv_parsing\csv-importer.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/russe/Repositories/School/DSA_Project2/rb_tree -IC:/Users/russe/Repositories/School/DSA_Project2/measurement -IC:/Users/russe/Repositories/School/DSA_Project2/csv_parsing
-  OBJECT_DIR = CMakeFiles\DSA_Project2.dir
-  OBJECT_FILE_DIR = CMakeFiles\DSA_Project2.dir\csv_parsing
-
-build CMakeFiles/DSA_Project2.dir/measurement/measurement.cpp.obj: CXX_COMPILER__DSA_Project2_unscanned_Debug C$:/Users/russe/Repositories/School/DSA_Project2/measurement/measurement.cpp || cmake_object_order_depends_target_DSA_Project2
-  DEP_FILE = CMakeFiles\DSA_Project2.dir\measurement\measurement.cpp.obj.d
-  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/russe/Repositories/School/DSA_Project2/rb_tree -IC:/Users/russe/Repositories/School/DSA_Project2/measurement -IC:/Users/russe/Repositories/School/DSA_Project2/csv_parsing
-  OBJECT_DIR = CMakeFiles\DSA_Project2.dir
-  OBJECT_FILE_DIR = CMakeFiles\DSA_Project2.dir\measurement
+  INCLUDES = -IC:/Users/russe/Repositories/School/DSA_Project2/backend/rb_tree -IC:/Users/russe/Repositories/School/DSA_Project2/backend/b_tree -IC:/Users/russe/Repositories/School/DSA_Project2/backend/measurement -IC:/Users/russe/Repositories/School/DSA_Project2/backend/csv_parsing -IC:/Users/russe/Repositories/School/DSA_Project2/backend/server_libs
+  OBJECT_DIR = CMakeFiles\backend.dir
+  OBJECT_FILE_DIR = CMakeFiles\backend.dir\csv_parsing
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target DSA_Project2
+# Link build statements for EXECUTABLE target backend
 
 
 #############################################
-# Link the executable DSA_Project2.exe
+# Link the executable backend.exe
 
-build DSA_Project2.exe: CXX_EXECUTABLE_LINKER__DSA_Project2_Debug CMakeFiles/DSA_Project2.dir/main.cpp.obj CMakeFiles/DSA_Project2.dir/rb_tree/red-black.cpp.obj CMakeFiles/DSA_Project2.dir/csv_parsing/csv-importer.cpp.obj CMakeFiles/DSA_Project2.dir/measurement/measurement.cpp.obj
+build backend.exe: CXX_EXECUTABLE_LINKER__backend_Debug CMakeFiles/backend.dir/main.cpp.obj CMakeFiles/backend.dir/rb_tree/red-black.cpp.obj CMakeFiles/backend.dir/csv_parsing/csv-importer.cpp.obj
   FLAGS = -g
-  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  OBJECT_DIR = CMakeFiles\DSA_Project2.dir
+  LINK_LIBRARIES = -lws2_32  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  OBJECT_DIR = CMakeFiles\backend.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_FILE = DSA_Project2.exe
-  TARGET_IMPLIB = libDSA_Project2.dll.a
-  TARGET_PDB = DSA_Project2.exe.dbg
+  TARGET_FILE = backend.exe
+  TARGET_IMPLIB = libbackend.dll.a
+  TARGET_PDB = backend.exe.dbg
 
 
 #############################################
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\russe\Repositories\School\DSA_Project2\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.2.0.1\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\russe\Repositories\School\DSA_Project2\backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.2.0.1\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -111,7 +107,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\russe\Repositories\School\DSA_Project2\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.2.0.1\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Users\russe\Repositories\School\DSA_Project2 -BC:\Users\russe\Repositories\School\DSA_Project2\cmake-build-debug"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\russe\Repositories\School\DSA_Project2\backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.2.0.1\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Users\russe\Repositories\School\DSA_Project2\backend -BC:\Users\russe\Repositories\School\DSA_Project2\backend\cmake-build-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -121,7 +117,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build DSA_Project2: phony DSA_Project2.exe
+build backend: phony backend.exe
 
 # =============================================================================
 # Folder targets.
@@ -129,9 +125,9 @@ build DSA_Project2: phony DSA_Project2.exe
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/russe/Repositories/School/DSA_Project2/cmake-build-debug
+# Folder: C:/Users/russe/Repositories/School/DSA_Project2/backend/cmake-build-debug
 
-build all: phony DSA_Project2.exe
+build all: phony backend.exe
 
 # =============================================================================
 # Built-in targets
@@ -140,14 +136,14 @@ build all: phony DSA_Project2.exe
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-Initialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/WindowsPaths.cmake C$:/Users/russe/Repositories/School/DSA_Project2/CMakeLists.txt CMakeCache.txt CMakeFiles/3.29.6/CMakeCCompiler.cmake CMakeFiles/3.29.6/CMakeCXXCompiler.cmake CMakeFiles/3.29.6/CMakeRCCompiler.cmake CMakeFiles/3.29.6/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-Initialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/WindowsPaths.cmake C$:/Users/russe/Repositories/School/DSA_Project2/backend/CMakeLists.txt CMakeCache.txt CMakeFiles/3.29.6/CMakeCCompiler.cmake CMakeFiles/3.29.6/CMakeCXXCompiler.cmake CMakeFiles/3.29.6/CMakeRCCompiler.cmake CMakeFiles/3.29.6/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-Initialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/WindowsPaths.cmake C$:/Users/russe/Repositories/School/DSA_Project2/CMakeLists.txt CMakeCache.txt CMakeFiles/3.29.6/CMakeCCompiler.cmake CMakeFiles/3.29.6/CMakeCXXCompiler.cmake CMakeFiles/3.29.6/CMakeRCCompiler.cmake CMakeFiles/3.29.6/CMakeSystem.cmake: phony
+build C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-Initialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.0.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/WindowsPaths.cmake C$:/Users/russe/Repositories/School/DSA_Project2/backend/CMakeLists.txt CMakeCache.txt CMakeFiles/3.29.6/CMakeCCompiler.cmake CMakeFiles/3.29.6/CMakeCXXCompiler.cmake CMakeFiles/3.29.6/CMakeRCCompiler.cmake CMakeFiles/3.29.6/CMakeSystem.cmake: phony
 
 
 #############################################

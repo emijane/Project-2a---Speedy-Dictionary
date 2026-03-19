@@ -82,7 +82,6 @@ public:
 
     // Public search function
     std::vector<std::string>* search(const std::string& term);
-    long long timed_search(const std::string& term, int iterations);
 };
 /***********</Class Declaration>************/
 
