@@ -1,8 +1,8 @@
-# Install script for directory: C:/Users/russe/Repositories/School/DSA_Project2
+# Install script for directory: C:/Users/russe/Repositories/School/DSA_Project2/backend
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/Project2")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/backend")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/russe/Repositories/School/DSA_Project2/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/russe/Repositories/School/DSA_Project2/backend/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

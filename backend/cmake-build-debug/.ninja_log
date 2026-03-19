@@ -1,8 +1,9 @@
 # ninja log v6
-31	402	7955713731770547	build.ninja	21b8079c7ba4be95
-950	1042	7954794652710553	Project2.exe	60e879ad1761f713
-37	1551	7955711821604870	CMakeFiles/DSA_Project2.dir/csv_parsing/csv-importer.cpp.obj	d0edf58bc2cdc731
-33	1614	7955711821564538	CMakeFiles/DSA_Project2.dir/rb_tree/red-black.cpp.obj	ae6b4cc44c837f90
-30	1532	7955711821534535	CMakeFiles/DSA_Project2.dir/main.cpp.obj	fc61f59fa9852609
-42	1553	7955711821654851	CMakeFiles/DSA_Project2.dir/measurement/measurement.cpp.obj	32e15848dca3c844
-1615	1953	7955711837383485	DSA_Project2.exe	2d0ea5428b40d01
+1399	1502	7956601835426116	backend.exe	3b64613711ccf4ae
+26	578	7956601821689461	CMakeFiles/backend.dir/main.cpp.obj	3bc267ee7c4f16f8
+26	417	7956601980929870	build.ninja	2be3c33b7d81c3b5
+37	1356	7956601821808171	CMakeFiles/backend.dir/measurement/measurement.cpp.obj	ba660b5ae83fac1c
+33	1365	7956601821768094	CMakeFiles/backend.dir/csv_parsing/csv-importer.cpp.obj	7bcf9a9b3281aca0
+29	1399	7956601821729957	CMakeFiles/backend.dir/rb_tree/red-black.cpp.obj	9e1ff8fd1c58f073
+25	1242	7956602067137798	CMakeFiles/backend.dir/main.cpp.obj	3bc267ee7c4f16f8
+1243	1364	7956602079318572	backend.exe	3b64613711ccf4ae
