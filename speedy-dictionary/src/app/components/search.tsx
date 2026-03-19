@@ -7,7 +7,7 @@ export const Search: React.FC = () => {
                 <input
                     type="text"
                     placeholder="Begin by searching for any word in the English Dictionary"
-                    className="w-full rounded-2xl border-2 border-gray-200 px-4 py-3 text-sm text-black/70 font-medium outline-none focus:border-black placeholder-gray-600"
+                    className="w-full rounded-2xl border-2 border-gray-200 px-4 py-3 text-md text-black/70 font-medium outline-none focus:border-black placeholder-gray-600"
                 />
             </div>
             
