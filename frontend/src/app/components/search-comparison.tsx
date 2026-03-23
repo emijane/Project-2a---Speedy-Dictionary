@@ -7,7 +7,7 @@ type SearchComparisonProps = {
 
 export const SearchComparison: React.FC<SearchComparisonProps> = ({ rbTime, bTime }) => {
     return (
-        <div className="mt-12 ml-20 not-first:max-w-4xl rounded-3xl border border-gray-200 bg-white p-8 shadow-sm">
+        <div className="my-12 ml-20 not-first:max-w-4xl rounded-3xl border border-gray-200 bg-white p-8 shadow-sm">
             <div className="space-y-2">
                 <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">
                     Analysis
