@@ -23,6 +23,25 @@ frontend/out
 # production
 /build
 
+# backend build files
+backend/build/
+backend/cmake-build-debug/
+backend/CMakeFiles/
+backend/CMakeCache.txt
+backend/cmake_install.cmake
+backend/Makefile
+backend/*.sln
+backend/*.vcxproj
+backend/*.vcxproj.filters
+backend/*.vcxproj.user
+backend/*.exe
+backend/**/*.exe
+backend/**/*.obj
+backend/**/*.pdb
+backend/**/*.ilk
+backend/**/*.lib
+backend/**/*.exp
+
 # misc
 .DS_Store
 *.pem
