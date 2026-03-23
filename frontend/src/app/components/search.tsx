@@ -72,7 +72,7 @@ export const Search: React.FC = () => {
             )}
 
             {!loading && !error && (
-                <div className="rounded-2xl bg-gray-50 p-6">
+                <div className="rounded-2xl bg-gray-50">
                     <h3 className="text-2xl font-bold text-black">
                         Word found:{" "}
                         <span className="text-blue-600">
