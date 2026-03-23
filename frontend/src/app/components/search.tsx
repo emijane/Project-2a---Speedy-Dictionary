@@ -3,12 +3,16 @@
 import React, { useState } from "react";
 import { searchWord, type SearchResponse } from "../lib/api";
 
+type SearchProps = {
+    result: SearchResponse | null;
+    setResult: React.Dispatch<React.SetStateAction<SearchResponse | null>>;
+};
+
 // This component allows users to search for a word and displays the 
 // definition along with performance metrics.
-export const Search: React.FC = () => {
+export const Search: React.FC<SearchProps> = ({ result, setResult }) => {
     // State variables to manage the search input, results, loading state, and errors
     const [word, setWord] = useState("");
-    const [result, setResult] = useState<SearchResponse | null>(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
 
@@ -107,19 +111,6 @@ export const Search: React.FC = () => {
                             </li>
                         )}
                     </ul>
-
-                    {result && (
-                        <div className="mt-4 space-y-2 text-base text-gray-600">
-                            <p>
-                                Red-Black Tree Time:{" "}
-                                <span className="font-semibold">{result.rbTime} microseconds</span>
-                            </p>
-                            <p>
-                                B-Tree Time:{" "}
-                                <span className="font-semibold">{result.bTime} microseconds</span>
-                            </p>
-                        </div>
-                    )}
                 </div>
             )}
         </div>

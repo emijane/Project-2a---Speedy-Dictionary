@@ -1,6 +1,11 @@
 import React from 'react';
 
-export const SearchComparison: React.FC = () => {
+type SearchComparisonProps = {
+    rbTime: number | null;
+    bTime: number | null;
+};
+
+export const SearchComparison: React.FC<SearchComparisonProps> = ({ rbTime, bTime }) => {
     return (
         <div className="mt-12 ml-20 not-first:max-w-4xl rounded-3xl border border-gray-200 bg-white p-8 shadow-sm">
             <div className="space-y-2">
@@ -45,6 +50,22 @@ export const SearchComparison: React.FC = () => {
                         O(log n)
                     </p>
                 </div>
+            </div>
+
+            <div className="mt-3 space-y-2 text-base text-gray-700">
+                <p>
+                    Red-Black Tree Time:{" "}
+                    <span className="font-semibold text-black">
+                        {rbTime !== null ? `${rbTime.toFixed(2)} microseconds` : "No search yet"}
+                    </span>
+                </p>
+
+                <p>
+                    B-Tree Time:{" "}
+                    <span className="font-semibold text-black">
+                        {bTime !== null ? `${bTime.toFixed(2)} microseconds` : "No search yet"}
+                    </span>
+                </p>
             </div>
         </div>
     );
