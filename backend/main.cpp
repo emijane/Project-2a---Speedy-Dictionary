@@ -16,7 +16,7 @@ rb_tree rb_tree_inst;
 int main() {
 
     // load data from CSV into trees
-    load_csv(&rb_tree_inst, "dictionary.csv");
+    load_csv(&rb_tree_inst, "../dictionary.csv");
 
     // create server object
     httplib::Server svr;
