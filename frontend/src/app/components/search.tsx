@@ -90,11 +90,11 @@ export const Search: React.FC = () => {
                         <div className="mt-4 space-y-2 text-base text-gray-600">
                             <p>
                                 Red-Black Tree Time:{" "}
-                                <span className="font-semibold">{result.rbTime} μs</span>
+                                <span className="font-semibold">{result.rbTime} microseconds</span>
                             </p>
                             <p>
                                 B-Tree Time:{" "}
-                                <span className="font-semibold">{result.bTime} μs</span>
+                                <span className="font-semibold">{result.bTime} microseconds</span>
                             </p>
                         </div>
                     )}
