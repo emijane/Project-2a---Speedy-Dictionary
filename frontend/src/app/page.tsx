@@ -2,7 +2,6 @@ import React from "react";
 import { Header } from "./components/header";
 import { Search } from "./components/search";
 import { SearchComparison } from "./components/search-comparison";
-import { SearchComparisonCards } from "./components/search-comparison-cards";
 import { BTreeFact } from "./components/b-tree-fact";
 
 export default function Home() {
@@ -15,7 +14,6 @@ export default function Home() {
           <Search />
           <hr className="border-t border-2 border-gray-100" />
           <SearchComparison />
-          <SearchComparisonCards />
           <hr className="border-t border-2 border-gray-100" />
           <BTreeFact />
         </div>
