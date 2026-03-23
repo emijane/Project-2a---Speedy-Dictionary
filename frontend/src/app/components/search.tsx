@@ -94,11 +94,19 @@ export const Search: React.FC = () => {
                         </span>
                     </h3>
 
-                    <p className="mt-3 text-lg leading-relaxed text-gray-700 whitespace-pre-line">
-                        {result
-                            ? result.definition
-                            : "The definition will appear here after the user searches for a word."}
-                    </p>
+                    <ul className="mt-3 text-lg leading-relaxed text-gray-700">
+                        {result ? (
+                            result.definition.split("\n").map((definition, index) => (
+                                <li key={index} className="list-disc list-inside">
+                                    {definition}
+                                </li>
+                            ))
+                        ) : (
+                            <li className="list-disc list-inside">
+                                The definition will appear here after the user searches for a word.
+                            </li>
+                        )}
+                    </ul>
 
                     {result && (
                         <div className="mt-4 space-y-2 text-base text-gray-600">
