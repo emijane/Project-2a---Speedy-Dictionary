@@ -133,6 +133,8 @@ vector<string> b_tree::search_recurse(string term, b_node *root_node) {
     if (root_node == nullptr) {
         return {};
     }
+    // increment level each time function called
+    levels++;
     // not null, search through values, find right place
         for (int i = 0; i < root_node->n; i++) {
             if (root_node-> words[i] == term) { // equal condition, return corresponding def
@@ -151,7 +153,6 @@ vector<string> b_tree::search_recurse(string term, b_node *root_node) {
             return {};
         }
         // recurse through greater than pointer
-    levels++;
     return search_recurse(term,root_node->children[root_node->n]);
 }
 //********************SPLIT_FUNCTION***********************************************************************
