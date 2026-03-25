@@ -9,26 +9,25 @@
 #include <string>
 #include <vector>
 #include <chrono>
-using namespace std;
 //***************************END_OF_INCLUDES******************************************************************
 //***************************B_NODE_STRUCT********************************************************************
 struct b_node {
     // stores words for dictionary
-    vector<string> words;
+    std::vector<std::string> words;
 
     //stores definitions, 2d since words can have multiple definitions
-    vector<vector<string>> definitions;
+    std::vector<std::vector<std::string>> definitions;
 
     // number of terms stored at node max will be 19
     int n;
     // stores pointers to node's children, max will be 20
-    vector<b_node*> children;
+    std::vector<b_node*> children;
     // parent pointer, useful for splitting
     b_node *parent;
     // constructor, takes in vector of words, vector of defs, initializes children to nullptrs if
     // no vector provided, all others to empty vectors, n to 0 representing size of 0
-    b_node(const vector<string> & words = {}, const vector<vector<string>>& definitions = {}, const int &n = 0,
-        const vector<b_node*> &children = vector<b_node*>(20, nullptr), b_node * parent = nullptr): words(words), definitions(definitions),
+    b_node(const std::vector<std::string> & words = {}, const std::vector<std::vector<std::string>>& definitions = {}, const int &n = 0,
+        const std::vector<b_node*> &children = std::vector<b_node*>(20, nullptr), b_node * parent = nullptr): words(words), definitions(definitions),
         n(n), children(children), parent(parent) {}
 };
 //*************************END_OF_B_NODE_STRUCT***************************************************************
@@ -42,10 +41,10 @@ class b_tree {
 
 
     // insert helper so external doesn't have to include node
-    bool insert_recurse(string term, vector<string> &defs, b_node *root_node);
+    bool insert_recurse(std::string term, std::vector<std::string> &defs, b_node *root_node);
 
     // search helper, so external doesn't  have to use node
-    vector<string> search_recurse(string term, b_node *root_node);
+    std::vector<std::string> search_recurse(std::string term, b_node *root_node);
     // destroy, used in destructor
     void destroy(b_node *root_node);
     // levels count for recursion
@@ -56,11 +55,11 @@ class b_tree {
     ~b_tree();
 
     // insertion, takes in word, vector of definitions, adds word, defs to tree, returns whether successful
-    bool insert(string term, vector<string> &defs);
+    bool insert(std::string term, std::vector<std::string> &defs);
 
     // search function, takes in string, returning vector corresponding to definitions
     // returns empty vector if word not in dictionary.
-    vector<string> search(string term);
+    std::vector<std::string> search(std::string term);
 };
 //***********************END_OF_B_TREE_CLASS******************************************************************
 #endif //PROJECT_2_B_TREE_H

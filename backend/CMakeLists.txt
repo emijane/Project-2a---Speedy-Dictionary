@@ -8,6 +8,8 @@ include_directories(rb_tree b_tree measurement csv_parsing server_libs)
 add_executable(backend main.cpp
         rb_tree/red-black.cpp
         rb_tree/red-black.h
+        b_tree/b_tree.h
+        b_tree/b_tree.cpp
         csv_parsing/csv-importer.cpp
         csv_parsing/csv-importer.h
         server_libs/httplib.h

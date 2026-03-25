@@ -3,6 +3,7 @@
 #include <vector>
 
 #include "red-black.h"
+#include "b_tree.h"
 #include "csv-importer.h"
 
 #include "httplib.h"
@@ -10,13 +11,13 @@
 
 /*****<Global tree structures>*****/
 rb_tree rb_tree_inst;
-//b_tree b_tree_inst;
+b_tree b_tree_inst;
 /*****</Global tree structures>*****/
 
 int main() {
 
     // load data from CSV into trees
-    load_csv(&rb_tree_inst, "../dictionary.csv");
+    load_csv(&rb_tree_inst, &b_tree_inst, "dictionary.csv");
 
     // create server object
     httplib::Server svr;
@@ -45,7 +46,7 @@ int main() {
 
         // search in b tree
         auto b_start_time = std::chrono::high_resolution_clock::now();
-        // MISSING B-TREE SEARCH FUNCTION
+        //b_tree_inst.search(normalized);
         auto b_end_time = std::chrono::high_resolution_clock::now();
         double b_time = std::chrono::duration<double, std::micro>(b_end_time - b_start_time).count();
 
