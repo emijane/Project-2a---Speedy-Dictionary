@@ -60,6 +60,7 @@ class b_tree {
     // search function, takes in string, returning vector corresponding to definitions
     // returns empty vector if word not in dictionary.
     std::vector<std::string> search(std::string term);
+
 };
 //***********************END_OF_B_TREE_CLASS******************************************************************
 #endif //PROJECT_2_B_TREE_H

@@ -46,17 +46,24 @@ int main() {
 
         // search in b tree
         auto b_start_time = std::chrono::high_resolution_clock::now();
-        b_tree_inst.search(normalized);
+        std::vector<std::string> b_definitions = b_tree_inst.search(normalized);
         auto b_end_time = std::chrono::high_resolution_clock::now();
         double b_time = std::chrono::duration<double, std::micro>(b_end_time - b_start_time).count();
 
         // Combine definitions into single string
         std::string definitions;
+        std::string b_defs;
         if (rb_definitions != nullptr) {
             for (int i = 0; i < rb_definitions->size(); i++) {
                 if (i > 0) definitions += "\n";
                 definitions += (*rb_definitions)[i];
             }
+
+            for (int i = 0; i < b_definitions.size(); i++) {
+                if (i>0) b_defs += "\n";
+                b_defs += b_definitions[i];
+            }
+
         } else {
             definitions = "Word not found";
         }
@@ -65,7 +72,8 @@ int main() {
         // build and send JSON response
         nlohmann::json body;
         body["word"] = word;
-        body["definition"] = definitions;
+        body["rb_definition"] = definitions;
+        body["b_definition"] = b_defs;
         body["rbTime"] = rb_time;
         body["bTime"] = b_time;
 

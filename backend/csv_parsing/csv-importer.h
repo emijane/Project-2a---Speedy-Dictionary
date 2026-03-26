@@ -5,6 +5,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <map>
 
 #include "red-black.h"
 #include "b_tree.h"

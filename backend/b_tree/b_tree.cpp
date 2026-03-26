@@ -16,8 +16,11 @@ bool b_tree::insert(std::string term, std::vector<std::string> &defs) {
     }
     else {
         for (int i = 0; i < root->n; i++) {
-            if (root-> words[i] == term) {
-                return false;
+            if (root->words[i] == term) {
+                for (const auto& def : defs) {
+                    root->definitions[i].push_back(def);
+                }
+                return true;
             }
             // check for when next value greater, list is in ascending order, so corresponding child
             //pointer will be the one to recurse down
@@ -71,8 +74,11 @@ bool b_tree::insert(std::string term, std::vector<std::string> &defs) {
 //Description, recurses through tree to find correct spot to insert
 bool b_tree::insert_recurse(std::string term, std::vector<std::string> &defs, b_node *root_node) {
     for (int i = 0; i < root_node->n; i++) {
-        if (root_node-> words[i] == term) {
-            return false;
+        if (root_node->words[i] == term) {
+            for (const auto& def : defs) {
+                root_node->definitions[i].push_back(def);
+            }
+            return true;
         }
         if (root_node-> words[i] > term) {
             if (root_node-> children[i] != nullptr) { // first term greater, spot to insert
@@ -156,143 +162,114 @@ std::vector<std::string> b_tree::search_recurse(std::string term, b_node *root_n
 // Description: only way to create new nodes, split takes a node with too many values,
 // finds the median value, and moves it up.
 void b_tree::split(b_node *root_node) {
-    // base case,
     if (root_node == nullptr) {
         return;
     }
-    // other base case, node no longer needs to split
-    if (root_node -> n <= 19) {
+    if (root_node->n <= 19) {
         return;
     }
-    // check if node to split is root, special case
+
     if (root_node == root) {
-            // left of med values, split always occurs with 20 values
-            int med = root_node-> n / 2;
-            //make temporary copies of median term and definition to be passed to new node
-            std::string med_term = root_node-> words[med];
-            root->words.erase(root->words.begin() + med);
-            std::vector <std::string> med_def = root-> definitions[med];
-            root->definitions.erase(root->definitions.begin() + med);
-            root -> n--;
-            // create new node which will be new root node
-            b_node *tmp = new b_node();
-            // create tmp node while values assigned
-            tmp->words.push_back(med_term);
-            tmp->definitions.push_back(med_def);
-            tmp->n = 1;
-            // make new right node, left node will be old root
-            b_node *right = new b_node();
-            right -> n = 0;
-            // push all values right of median from root to right node and pop from left node
-            // root n modified in loop, need to save before to use as condition
-            int end = root-> n;
-            for (int i = med; i < end; i++) {
-                right->words.push_back(root-> words[med]);
-                right->definitions.push_back(root-> definitions[med]);
-                // transfer children, set former equal to nullptr
-                right -> children[right->n] = root-> children[med +1];
-                // check if nullptr, if not, set parent to root, right is now root's child
-                if (right -> children[right -> n] != nullptr) {
-                    right -> children[right->n] -> parent = right;
-                }
-                root-> children[med + 1] = nullptr;
-                right-> n++;
-                // removing back n/2 times will get the second half of the list gone
-                root -> words.erase(root-> words.begin() + med);
-                root -> definitions.erase(root-> definitions.begin() + med);
-                root -> n--;
+        int med = root_node->n / 2;
+        std::string med_term = root_node->words[med];
+        root->words.erase(root->words.begin() + med);
+        std::vector<std::string> med_def = root->definitions[med];
+        root->definitions.erase(root->definitions.begin() + med);
+        root->n--;
+
+        b_node *tmp = new b_node();
+        tmp->words.push_back(med_term);
+        tmp->definitions.push_back(med_def);
+        tmp->n = 1;
+
+        b_node *right = new b_node();
+        right->n = 0;
+
+        int end = root->n;
+        for (int i = med; i < end; i++) {
+            right->words.push_back(root->words[med]);
+            right->definitions.push_back(root->definitions[med]);
+            right->children[right->n] = root->children[med + 1];
+            if (right->children[right->n] != nullptr) {
+                right->children[right->n]->parent = right;
             }
-        // last child, rightmost
-        right -> children[right-> n] = root-> children[end];
-        if (right -> children[right->n] != nullptr) {
-            right -> children[right->n]->parent = right;
+            root->children[med + 1] = nullptr;
+            right->n++;
+            root->words.erase(root->words.begin() + med);
+            root->definitions.erase(root->definitions.begin() + med);
+            root->n--;
         }
-        root -> children[end] = nullptr;
-        // set both parents to new root
-        root-> parent = tmp;
-        right -> parent = tmp;
-        // push children, former root, new node
-        tmp -> children[0] = root;
-        tmp -> children[1] = right;
+
+        right->children[right->n] = root->children[end];
+        if (right->children[right->n] != nullptr) {
+            right->children[right->n]->parent = right;
+        }
+        root->children[end] = nullptr;
+
+        root->parent = tmp;
+        right->parent = tmp;
+        tmp->children[0] = root;
+        tmp->children[1] = right;
         root = tmp;
     }
     else {
-        // similar to root, but don't need to make a new root node, and instead recurse up tree after med added
-        // make median var, along with temp vals for med term and def, delete from original node
-        int med = root_node-> n / 2;
-        std::string med_term = root_node-> words[med];
+        int med = root_node->n / 2;
+        std::string med_term = root_node->words[med];
         root_node->words.erase(root_node->words.begin() + med);
-        std::vector <std::string> med_def = root_node-> definitions[med];
+        std::vector<std::string> med_def = root_node->definitions[med];
         root_node->definitions.erase(root_node->definitions.begin() + med);
-        root_node-> n--;
-        // new temp right node, same logic as root, push values in order
+        root_node->n--;
+
         b_node *right = new b_node();
-        right -> n = 0;
-        int end = root_node-> n;
+        right->n = 0;
+
+        int end = root_node->n;
         for (int i = med; i < end; i++) {
-            right -> words.push_back(root_node-> words[med]);
-            right -> definitions.push_back(root_node-> definitions[med]);
-            right -> children[right-> n] = root_node-> children[med+1];
-            if (right -> children[right -> n] != nullptr) {
-                right -> children[right->n] -> parent = right;
+            right->words.push_back(root_node->words[med]);
+            right->definitions.push_back(root_node->definitions[med]);
+            right->children[right->n] = root_node->children[med + 1];
+            if (right->children[right->n] != nullptr) {
+                right->children[right->n]->parent = right;
             }
-            root_node -> children[med+1] = nullptr;
-            right -> n++;
-            // erase keeps values at median, shifting vector so indexing is not required
-            root_node -> words.erase(root_node-> words.begin() + med);
-            root_node -> definitions.erase(root_node-> definitions.begin() + med);
-            root_node -> n--;
+            root_node->children[med + 1] = nullptr;
+            right->n++;
+            root_node->words.erase(root_node->words.begin() + med);
+            root_node->definitions.erase(root_node->definitions.begin() + med);
+            root_node->n--;
         }
-        //rightmost
-        right -> children[right-> n] = root_node-> children[end];
-        if (right -> children[right->n] != nullptr) {
-            right -> children[right->n]->parent = right;
+
+        right->children[right->n] = root_node->children[end];
+        if (right->children[right->n] != nullptr) {
+            right->children[right->n]->parent = right;
         }
-        root_node -> children[end] = nullptr;
-        // set root parent as right parent
-        right-> parent = root_node-> parent;
-        // find where new values belong in parent, add right child at spot past
-        // need flag because not returning if inserted
-        bool added = false;
-        for (int i = 0; i < root_node -> parent -> n; i++) {
-            if (root_node -> parent -> words[i] > med_term && !added) {
-                added = true;
-                root_node-> parent -> words.insert(root_node-> parent -> words.begin() + i, med_term);
-                root_node-> parent -> definitions.insert(root_node-> parent -> definitions.begin() + i, med_def);
-                root_node-> parent -> n++;
-                if (root_node -> parent -> children[i+1] == nullptr) {
-                    root_node -> parent -> children[i+1] = right;
-                }
-                else {
-                    int j = i+1; // start at current node, move to next non null child
-                    while (root_node -> parent -> children[j] != nullptr) {
-                        j++;
-                    }
-                    // j now at first index where child is null
-                    while (j > i+1) {
-                        // shifts values one to right, first val overwritten, already established as nullptr
-                        root_node -> parent -> children[j] = root_node -> parent -> children[j-1];
-                        j--;
-                    }
-                    // values shifted, set right to correct spot
-                    root_node -> parent -> children[i+1] = right;
-                }
-                // exit loop, correct spot found
+        root_node->children[end] = nullptr;
+        right->parent = root_node->parent;
+
+        // find root_node's position in parent's children array
+        int node_pos = -1;
+        for (int i = 0; i <= root_node->parent->n; i++) {
+            if (root_node->parent->children[i] == root_node) {
+                node_pos = i;
                 break;
             }
         }
-        if (!added) {
-            // not found greater, add term at end
-            root_node -> parent -> words.push_back(med_term);
-            root_node-> parent -> definitions.push_back(med_def);
-            root_node -> parent -> children[root_node -> parent -> n] = right;
-            root_node-> parent -> n++;
-        }
 
-        // recurse up tree
-        split(root_node -> parent);
+        // insert med_term at node_pos in parent
+        root_node->parent->words.insert(root_node->parent->words.begin() + node_pos, med_term);
+        root_node->parent->definitions.insert(root_node->parent->definitions.begin() + node_pos, med_def);
+        root_node->parent->n++;
+
+        // shift children right from the end down to node_pos+1 to make room for right
+        for (int i = root_node->parent->n; i > node_pos + 1; i--) {
+            root_node->parent->children[i] = root_node->parent->children[i - 1];
+        }
+        // place right child immediately after root_node
+        root_node->parent->children[node_pos + 1] = right;
+
+        // recurse up
+        split(root_node->parent);
     }
-};
+}
 
 b_tree::~b_tree() {
     destroy(root);
