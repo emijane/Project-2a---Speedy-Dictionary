@@ -14,4 +14,4 @@ RUN cmake --build build
 
 EXPOSE 8080
 
-CMD ["./cmake-build-release/release/backend"]
+CMD ["./build/backend"]
