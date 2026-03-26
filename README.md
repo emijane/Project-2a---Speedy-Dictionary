@@ -9,3 +9,9 @@
 </ul>
 
 <h3>Launching frontend</h3>
+<ul>
+  <li>CD into the frontend folder /frontend</li>
+  <li>Make sure your node.js and npm are installed and up to date.</li>
+  <li>Run npm install to install all packages needed</li>
+  <li>Open localhost:3000</li>
+</ul>
