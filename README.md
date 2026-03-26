@@ -1,3 +1,6 @@
+<h1>Speedy Dictionary</h1>
+<h2>High-performance dictionary search application comparing Red-Black Trees and B-Trees, featuring a C++ backend and a modern Next.js frontend with real-time performance metrics.</h2>
+
 <h2>Running this project</h2>
 <h3>Launching backend</h3>
 <ul>
