@@ -72,8 +72,8 @@ int main() {
         // build and send JSON response
         nlohmann::json body;
         body["word"] = word;
-        body["rb_definition"] = definitions;
-        body["b_definition"] = b_defs;
+        body["definition"] = definitions;
+        //body["b_definition"] = b_defs;
         body["rbTime"] = rb_time;
         body["bTime"] = b_time;
 
