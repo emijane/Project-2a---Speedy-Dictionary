@@ -1,29 +1,96 @@
 <h1>Speedy Dictionary</h1>
 <p>High-performance dictionary search application comparing Red-Black Trees and B-Trees, featuring a C++ backend and a modern Next.js frontend with real-time performance metrics.</p>
 
-<h2>Running this project</h2>
-<h3>Launching backend</h3>
+<h1>Starting the Backend Server</h1>
+
+<p>
+    The backend can be run in <strong>Debug</strong> or <strong>Release</strong> mode.
+</p>
+
 <ul>
-  <li>Open the backend folder as a project in CLion (or any other C++ IDE).</li>
-  <li>Reload the CMake project. This should generate the <code>cmake-build-debug</code> folder in the backend folder.</li>
-  <li>Create a run configuration. The target and executable should be the <code>backend</code> project. Set the working directory to be <code>$ProjectFileDir$</code>.</li>
-  <li>Build and run the project. The backend should now be live.</li>
-  <li>To test the backend by itself (without using the frontend), launch the backend and navigate to <code>localhost:8080/search?word=</code> in your browser. Add a word at the end of the link to search for it. For example, <code>localhost:8080/search?word=data</code> would return the definition for the word "data".</li>
+    <li><strong>Debug:</strong> for development and fixing issues</li>
+    <li><strong>Release:</strong> for accurate performance testing</li>
 </ul>
 
-<h3>Launching frontend</h3>
+<h2>Prerequisites</h2>
+
 <ul>
-  <li>Navigate to the frontend directory:
-    <pre><code>cd frontend</code></pre>
-  </li>
-  <li>Ensure Node.js and npm are installed and up to date.</li>
-  <li>Install dependencies:
-    <pre><code>npm install</code></pre>
-  </li>
-  <li>Start the development server:
-    <pre><code>npm run dev</code></pre>
-  </li>
-  <li>Open your browser and go to:
-    <pre><code>http://localhost:3000</code></pre>
-  </li>
+    <li>CMake installed</li>
+    <li>A C++ compiler installed</li>
+    <li><code>dictionary.csv</code> inside the <code>backend</code> folder</li>
+</ul>
+
+<pre><code>backend/
+├── CMakeLists.txt
+├── main.cpp
+├── dictionary.csv
+├── rb_tree/
+├── b_tree/
+├── csv_parsing/
+</code></pre>
+
+<h2>CSV Path</h2>
+
+<p>
+    Since the executable runs inside a build folder, use:
+</p>
+
+<pre><code>load_csv(&amp;rb_tree_inst, &amp;b_tree_inst, "../../dictionary.csv");</code></pre>
+
+<h1>Build and Run (Debug)</h1>
+
+<pre><code>cd backend
+mkdir cmake-build-debug
+cd cmake-build-debug
+cmake ..
+cmake --build . --config Debug
+cd Debug
+.\backend.exe
+</code></pre>
+
+<h1>Build and Run (Release)</h1>
+
+<pre><code>cd backend
+mkdir cmake-build-release
+cd cmake-build-release
+cmake .. -DCMAKE_BUILD_TYPE=Release
+cmake --build . --config Release
+cd Release
+.\backend.exe
+</code></pre>
+
+<h1>Rebuilding</h1>
+
+<p>If something breaks, delete the build folder and rebuild:</p>
+
+<pre><code>cd backend
+Remove-Item -Recurse -Force cmake-build-debug
+# or cmake-build-release
+
+mkdir cmake-build-debug
+cd cmake-build-debug
+cmake ..
+cmake --build . --config Debug
+</code></pre>
+
+<h1>Running the Full Project</h1>
+
+<p>Run both servers at the same time:</p>
+
+<ul>
+    <li>Terminal 1: backend (Debug or Release) -> localhost:8080 once running</li>
+    <li>Terminal 2: frontend -> localhost:3000 once running</li>
+</ul>
+
+<pre><code>cd frontend
+npm install
+npm run dev
+</code></pre>
+
+<h1>Notes</h1>
+
+<ul>
+    <li>The backend terminal staying open with no output usually means it is running</li>
+    <li>Use <strong>Release mode</strong> for performance comparisons</li>
+    <li>If search fails, make sure the backend server is running</li>
 </ul>

@@ -26,7 +26,9 @@ frontend/out
 # backend build files
 backend/build/
 backend/cmake-build-debug/
+backend/cmake-build-release/
 cmake-build-debug
+cmake-build-release
 backend/CMakeFiles/
 backend/CMakeCache.txt
 backend/cmake_install.cmake
