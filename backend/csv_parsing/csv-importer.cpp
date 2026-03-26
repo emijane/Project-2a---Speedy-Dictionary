@@ -53,7 +53,7 @@ void load_csv(rb_tree* rb_tree, b_tree* b_tree, const std::string& filename) {
         // insert pair into trees
         rb_tree->insert(term, definition);
         std::vector<std::string> defs = {definition};  // wrap in vector for b-tree
-        //b_tree->insert(term, defs);
+        b_tree->insert(term, defs);
     }
 
     // close file

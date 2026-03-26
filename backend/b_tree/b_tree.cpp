@@ -1,18 +1,14 @@
 //*****************************INCLUDES**********************************************************************
 #include "b_tree.h"
-#include <string>
-#include <vector>
-#include <chrono>
-using namespace std;
 //***************************END_OF_INCLUDES******************************************************************
 //***************************INSERT_FUNCTION******************************************************************
 //Inputs: string term, term to insert, vector defs, list of definitions for the term, in the case of multiple,
 //Returns bool, whether successful insertion
 //Description: checks root node, if not full inserts there, if full calls recurse
-bool b_tree::insert(string term, vector<string> &defs) {
+bool b_tree::insert(std::string term, std::vector<std::string> &defs) {
     // tree empty, puts first value in root, returns true after making node and incrementing n
     if (root == nullptr) {
-        root = new b_node({},{},0, vector<b_node*>(21,nullptr),nullptr);
+        root = new b_node({},{},0, std::vector<b_node*>(21,nullptr),nullptr);
         root-> words.push_back(term);
         root-> definitions.push_back(defs);
         root-> n = 1;
@@ -73,7 +69,7 @@ bool b_tree::insert(string term, vector<string> &defs) {
 //INPUTS: takes in term to insert, vector of definitions corresponding to the term, and node currently at, b_node*
 //Returns boolean, whether successful.
 //Description, recurses through tree to find correct spot to insert
-bool b_tree::insert_recurse(string term, vector<string> &defs, b_node *root_node) {
+bool b_tree::insert_recurse(std::string term, std::vector<std::string> &defs, b_node *root_node) {
     for (int i = 0; i < root_node->n; i++) {
         if (root_node-> words[i] == term) {
             return false;
@@ -119,7 +115,7 @@ bool b_tree::insert_recurse(string term, vector<string> &defs, b_node *root_node
 //Inputs: term to search
 //Returns definition vector corresponding to the term
 // only calls search recurse so there is an easy way to call function with just term
-vector<string> b_tree::search(string term) {
+std::vector<std::string> b_tree::search(std::string term) {
     // all checking occurs in recursive
     levels = 0;
     return search_recurse(term, root);
@@ -128,7 +124,7 @@ vector<string> b_tree::search(string term) {
 //***************SEARCH_RECURSE*****************************************************************
 //INPUTS: takes in term, b_node* recursing through tree to find correct spot
 //Returns vector of defs corresponding to term, most of the body of the search functionality contained here
-vector<string> b_tree::search_recurse(string term, b_node *root_node) {
+std::vector<std::string> b_tree::search_recurse(std::string term, b_node *root_node) {
     // if root is null and val hasn't been found, return empty vector
     if (root_node == nullptr) {
         return {};
@@ -173,9 +169,9 @@ void b_tree::split(b_node *root_node) {
             // left of med values, split always occurs with 20 values
             int med = root_node-> n / 2;
             //make temporary copies of median term and definition to be passed to new node
-            string med_term = root_node-> words[med];
+            std::string med_term = root_node-> words[med];
             root->words.erase(root->words.begin() + med);
-            vector <string> med_def = root-> definitions[med];
+            std::vector <std::string> med_def = root-> definitions[med];
             root->definitions.erase(root->definitions.begin() + med);
             root -> n--;
             // create new node which will be new root node
@@ -224,9 +220,9 @@ void b_tree::split(b_node *root_node) {
         // similar to root, but don't need to make a new root node, and instead recurse up tree after med added
         // make median var, along with temp vals for med term and def, delete from original node
         int med = root_node-> n / 2;
-        string med_term = root_node-> words[med];
+        std::string med_term = root_node-> words[med];
         root_node->words.erase(root_node->words.begin() + med);
-        vector <string> med_def = root_node-> definitions[med];
+        std::vector <std::string> med_def = root_node-> definitions[med];
         root_node->definitions.erase(root_node->definitions.begin() + med);
         root_node-> n--;
         // new temp right node, same logic as root, push values in order

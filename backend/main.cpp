@@ -46,7 +46,7 @@ int main() {
 
         // search in b tree
         auto b_start_time = std::chrono::high_resolution_clock::now();
-        //b_tree_inst.search(normalized);
+        b_tree_inst.search(normalized);
         auto b_end_time = std::chrono::high_resolution_clock::now();
         double b_time = std::chrono::duration<double, std::micro>(b_end_time - b_start_time).count();
 
