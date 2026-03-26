@@ -26,7 +26,7 @@ export default function Home() {
           <BTreeFact />
           <hr className="border-t border-2 border-gray-100" />
         </div>
-        <p className="text-black/70 ml-20 mt-12">Made with love by Russell MacGregor, Ryan Cecil, and Emma DeNunzio.</p>
+        <p className="text-black/70 mt-12">Made with love by Russell MacGregor, Ryan Cecil, and Emma DeNunzio.</p>
     </div>
   );
 }
