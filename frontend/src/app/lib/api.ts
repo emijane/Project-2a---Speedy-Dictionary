@@ -9,7 +9,8 @@ export type SearchResponse = {
 };
 
 // Base URL for the backend API.
-const API_BASE_URL = "http://localhost:8080";
+const API_BASE_URL =
+    process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
 
 // Function to search for a word using the backend API. It takes a word as input and returns
 // a Promise that resolves to a SearchResponse object containing the word, its definition,
