@@ -9,6 +9,8 @@
 #include "httplib.h"
 #include "nlohmann/json.hpp"
 
+#include <cstdlib>
+
 /*****<Global tree structures>*****/
 rb_tree rb_tree_inst;
 b_tree b_tree_inst;
@@ -81,7 +83,15 @@ int main() {
     });
 
     // Listen for http requests
-    svr.listen("0.0.0.0", 8080);
+    int port = 8080;
+    const char* env_port = std::getenv("PORT");
+
+    if (env_port != nullptr) {
+        port = std::stoi(env_port);
+    }
+
+    std::cout << "Server starting on port " << port << std::endl;
+    svr.listen("0.0.0.0", port);
 
     return 0;
 }
