@@ -34,9 +34,24 @@ int main() {
     // create server object
     httplib::Server svr;
 
+    // root endpoint to check if server is running
+    svr.Get("/", [](const httplib::Request& req, httplib::Response& res) {
+    res.set_content("Server is running", "text/plain");
+    });
+
     // search endpoint
     svr.Get("/search", [&](const httplib::Request& req, httplib::Response& res) {
         res.set_header("Access-Control-Allow-Origin", "*"); // allow frontend
+
+        // validate query parameter
+        // if "word" parameter is missing, return 400 error with JSON message
+        if (!req.has_param("word")) {
+            nlohmann::json body;
+            body["error"] = "Missing word parameter";
+            res.status = 400;
+            res.set_content(body.dump(), "application/json");
+            return;
+        }
 
         std::string word = req.get_param_value("word");
 
