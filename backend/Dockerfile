@@ -9,7 +9,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN cmake -B build -S .
+RUN cmake -B build -S . -DCMAKE_BUILD_TYPE=Release
 RUN cmake --build build
 
 EXPOSE 8080
