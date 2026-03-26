@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.29)
+cmake_minimum_required(VERSION 3.22)
 project(backend)
 
 set(CMAKE_CXX_STANDARD 20)
@@ -15,12 +15,11 @@ add_executable(backend main.cpp
         server_libs/httplib.h
 )
 
+if (WIN32)
+    target_link_libraries(backend ws2_32)
 
-# Compatibility for httplib.h:
-
-target_link_libraries(backend ws2_32)
-
-add_compile_definitions(
-        _WIN32_WINNT=0x0A00
-        WINVER=0x0A00
-)
+    add_compile_definitions(
+            _WIN32_WINNT=0x0A00
+            WINVER=0x0A00
+    )
+endif()
