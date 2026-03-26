@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <fstream>
 
 #include "red-black.h"
 #include "b_tree.h"
@@ -11,6 +12,7 @@
 
 #include <cstdlib>
 
+
 /*****<Global tree structures>*****/
 rb_tree rb_tree_inst;
 b_tree b_tree_inst;
@@ -19,7 +21,15 @@ b_tree b_tree_inst;
 int main() {
 
     // load data from CSV into trees
-    load_csv(&rb_tree_inst, &b_tree_inst, "../../dictionary.csv");
+    std::string csv_path = "dictionary.csv";
+    std::ifstream test_file(csv_path);
+
+    if (!test_file.is_open()) {
+        csv_path = "../../dictionary.csv";
+    }
+    test_file.close();
+
+    load_csv(&rb_tree_inst, &b_tree_inst, csv_path);
 
     // create server object
     httplib::Server svr;
