@@ -56,27 +56,20 @@ int main() {
     
     // handle preflight requests for cors
     svr.Options(R"(.*)", [](const httplib::Request& req, httplib::Response& res) {
-        std::string allowed_origin = get_allowed_origin(req);
-
-        if (!allowed_origin.empty()) {
-            res.set_header("Access-Control-Allow-Origin", allowed_origin);
-            res.set_header("Access-Control-Allow-Methods", "GET, OPTIONS");
-            res.set_header("Access-Control-Allow-Headers", "Content-Type");
-        }
+        // allow all origins for local and deployed frontend
+        res.set_header("Access-Control-Allow-Origin", "*");
+        res.set_header("Access-Control-Allow-Methods", "GET, OPTIONS");
+        res.set_header("Access-Control-Allow-Headers", "Content-Type");
 
         res.status = 204;
     });
 
     // search endpoint
     svr.Get("/search", [&](const httplib::Request& req, httplib::Response& res) {
-        // set cors headers for allowed local or deployed frontend
-        std::string allowed_origin = get_allowed_origin(req);
-
-        if (!allowed_origin.empty()) {
-            res.set_header("Access-Control-Allow-Origin", allowed_origin);
-            res.set_header("Access-Control-Allow-Methods", "GET, OPTIONS");
-            res.set_header("Access-Control-Allow-Headers", "Content-Type");
-        }
+        // allow all origins for local and deployed frontend
+        res.set_header("Access-Control-Allow-Origin", "*");
+        res.set_header("Access-Control-Allow-Methods", "GET, OPTIONS");
+        res.set_header("Access-Control-Allow-Headers", "Content-Type");
 
         // validate query parameter
         // if "word" parameter is missing, return 400 error with JSON message
