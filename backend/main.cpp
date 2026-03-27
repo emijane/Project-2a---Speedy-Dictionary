@@ -26,7 +26,11 @@ std::string get_allowed_origin(const httplib::Request& req) {
         return origin;
     }
 
-    if (origin == "https://project-2a--speedy-dictionary-1.onrender.com") {
+    if (origin == "http://localhost:3000") {
+        return origin;
+    }
+
+    if (origin == "https://project-2a-speedy-dictionary-1.onrender.com") {
         return origin;
     }
 
