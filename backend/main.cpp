@@ -18,6 +18,21 @@ rb_tree rb_tree_inst;
 b_tree b_tree_inst;
 /*****</Global tree structures>*****/
 
+// returns the allowed frontend origin for local or deployed frontend
+std::string get_allowed_origin(const httplib::Request& req) {
+    std::string origin = req.get_header_value("Origin");
+
+    if (origin == "http://localhost:3000") {
+        return origin;
+    }
+
+    if (origin == "https://project-2a--speedy-dictionary-1.onrender.com") {
+        return origin;
+    }
+
+    return "";
+}
+
 int main() {
 
     // load data from CSV into trees
@@ -36,22 +51,32 @@ int main() {
 
     // root endpoint to check if server is running
     svr.Get("/", [](const httplib::Request& req, httplib::Response& res) {
-        res.set_content("Server is running", "text/plain");
+    res.set_content("Server is running", "text/plain");
     });
-
-    // CORS preflight handler to allow requests from frontend (Avoid CORS errors)
+    
+    // handle preflight requests for cors
     svr.Options(R"(.*)", [](const httplib::Request& req, httplib::Response& res) {
-        res.set_header("Access-Control-Allow-Origin", "https://project-2a--speedy-dictionary-1.onrender.com");
-        res.set_header("Access-Control-Allow-Methods", "GET, OPTIONS");
-        res.set_header("Access-Control-Allow-Headers", "Content-Type");
+        std::string allowed_origin = get_allowed_origin(req);
+
+        if (!allowed_origin.empty()) {
+            res.set_header("Access-Control-Allow-Origin", allowed_origin);
+            res.set_header("Access-Control-Allow-Methods", "GET, OPTIONS");
+            res.set_header("Access-Control-Allow-Headers", "Content-Type");
+        }
+
         res.status = 204;
     });
 
     // search endpoint
     svr.Get("/search", [&](const httplib::Request& req, httplib::Response& res) {
-        res.set_header("Access-Control-Allow-Origin", "https://project-2a--speedy-dictionary-1.onrender.com");
-        res.set_header("Access-Control-Allow-Methods", "GET, OPTIONS");
-        res.set_header("Access-Control-Allow-Headers", "Content-Type"); // allow frontend
+        // set cors headers for allowed local or deployed frontend
+        std::string allowed_origin = get_allowed_origin(req);
+
+        if (!allowed_origin.empty()) {
+            res.set_header("Access-Control-Allow-Origin", allowed_origin);
+            res.set_header("Access-Control-Allow-Methods", "GET, OPTIONS");
+            res.set_header("Access-Control-Allow-Headers", "Content-Type");
+        }
 
         // validate query parameter
         // if "word" parameter is missing, return 400 error with JSON message
