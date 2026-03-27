@@ -52,6 +52,9 @@ export const Search: React.FC<SearchProps> = ({ result, setResult }) => {
         }
     };
 
+    // Calculate amount of definitions returned
+    const definitionCount = result ? result.definition.split("\n").length : 0;
+
     // Render the search input, button, and results based on the current state
     return (
         <div className="max-w-4xl space-y-6 px-20 py-10">
@@ -98,7 +101,12 @@ export const Search: React.FC<SearchProps> = ({ result, setResult }) => {
                         </span>
                     </h3>
 
-                    <ul className="mt-3 text-lg leading-relaxed text-gray-700">
+                    <ul className="text-lg leading-relaxed text-gray-700">
+                        {definitionCount > 1 && (
+                            <p className="text-sm font-medium mt-1 mb-3 text-gray-500">
+                                {definitionCount} definitions found:
+                            </p>
+                        )}
                         {result ? (
                             result.definition.split("\n").map((definition, index) => (
                                 <li key={index} className="list-disc list-inside">
