@@ -36,12 +36,22 @@ int main() {
 
     // root endpoint to check if server is running
     svr.Get("/", [](const httplib::Request& req, httplib::Response& res) {
-    res.set_content("Server is running", "text/plain");
+        res.set_content("Server is running", "text/plain");
+    });
+
+    // CORS preflight handler to allow requests from frontend (Avoid CORS errors)
+    svr.Options(R"(.*)", [](const httplib::Request& req, httplib::Response& res) {
+        res.set_header("Access-Control-Allow-Origin", "https://project-2a--speedy-dictionary-1.onrender.com");
+        res.set_header("Access-Control-Allow-Methods", "GET, OPTIONS");
+        res.set_header("Access-Control-Allow-Headers", "Content-Type");
+        res.status = 204;
     });
 
     // search endpoint
     svr.Get("/search", [&](const httplib::Request& req, httplib::Response& res) {
-        res.set_header("Access-Control-Allow-Origin", "*"); // allow frontend
+        res.set_header("Access-Control-Allow-Origin", "https://project-2a--speedy-dictionary-1.onrender.com");
+        res.set_header("Access-Control-Allow-Methods", "GET, OPTIONS");
+        res.set_header("Access-Control-Allow-Headers", "Content-Type"); // allow frontend
 
         // validate query parameter
         // if "word" parameter is missing, return 400 error with JSON message
