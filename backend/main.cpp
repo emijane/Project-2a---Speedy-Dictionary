@@ -132,6 +132,7 @@ int main() {
         body["rbTime"] = rb_time;
         body["bTime"] = b_time;
 
+        res.set_header("X-Debug-Origin", "cors-test");
         res.set_content(body.dump(), "application/json");
     });
 
