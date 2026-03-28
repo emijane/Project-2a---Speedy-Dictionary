@@ -4,273 +4,163 @@
 //***************************INSERT_FUNCTION******************************************************************
 //Inputs: string term, term to insert, vector defs, list of definitions for the term, in the case of multiple,
 //Returns bool, whether successful insertion
-//Description: checks root node, if not full inserts there, if full calls recurse
-bool b_tree::insert(std::string term, std::vector<std::string> &defs) {
-    // tree empty, puts first value in root, returns true after making node and incrementing n
-    if (root == nullptr) {
-        root = new b_node({},{},0, std::vector<b_node*>(21,nullptr),nullptr);
-        root-> words.push_back(term);
-        root-> definitions.push_back(defs);
-        root-> n = 1;
+//Description: wrapper for input, made so main can call insert without having to reference a node. Also handles root split.
+bool b_tree::insert(const std::string &term,const std::vector<std::string> &defs) {
+    bool res =  insert_recurse(term,defs, root);
+    if (root != nullptr) {
+        // avoid referencing nullptr, check if root needs to split, if so use split function after making new root
+        if (root -> words.size() >= 2*t -1) {
+            // make new tmp to be parent of root
+            b_node *tmp = new b_node();
+            // only parent, previous was root
+            tmp -> children.push_back(root);
+            // set new root
+            root = tmp;
+            // let split handle value splitting, now former root is child of new root, format split expects
+            split(root, 0);
+        }
+
+    }
+    // returns result of insert recurse after root check, insert recurse checks if all other nodes need to split
+    return res;
+}
+//**************************END_OF_INSERT_FUNCTION*************************************************************
+//**************************INSERT_RECURSE*********************************************************************
+//Inputs: string term to insert, vector defs to insert, node to start at
+//Returns: bool, whether term inserted successfully
+//Description: main functionality of insertion, starts at tree, recurses until
+bool b_tree::insert_recurse(const std::string &term, const std::vector<std::string> &defs, b_node *root_node) {
+    // base case, root_node doesn't exist, first entry
+    if (root_node == nullptr) {
+        std::vector<std::string> term_tmp = {};
+        term_tmp.push_back(term);
+        std::vector<std::vector<std::string>> def_tmp = {};
+        def_tmp.push_back(defs);
+        b_node *tmp = new b_node(term_tmp,  def_tmp);
+        root = tmp;
         return true;
     }
+    // node not leaf, recurse to correct child
+    else if (root_node -> children.empty() == false) {
+        std:: string curr_term;
+        // compare to find first node where term is greater than the term to insert
+      for (int i = 0; i < root_node -> words.size(); i++) {
+          curr_term = root_node -> words[i];
+          // term already in tree
+          if (term == curr_term) {
+              return false;
+          }
+          // first term greater, spot to recurse to child
+          if (term < curr_term) {
+              bool res = insert_recurse(term, defs, root_node -> children[i]);
+              // check if node path inserted needs to split on the way up and need parent node of node to split
+              if (root_node -> children [i]-> words.size() > (2 * t - 1)) {
+                  split(root_node , i);
+              }
+              return res;
+          }
+      }
+        // greater than all in list, go to rightmost child
+        bool res = insert_recurse(term, defs, root_node -> children[root_node -> children.size()-1]);
+        // last child word size
+        if (root_node -> children[root_node -> children.size() -1] -> words.size()  > (2 * t - 1)) {
+            split(root_node, root_node -> children.size() - 1);
+        }
+        return res;
+    }
+    // node is leaf, find right spot to insert and check sizing
     else {
-        for (int i = 0; i < root->n; i++) {
-            if (root->words[i] == term) {
-                for (const auto& def : defs) {
-                    root->definitions[i].push_back(def);
-                }
-                return true;
+        // find spot to insert using similar logic
+        std::string curr_term;
+        for (int i = 0; i < root_node -> words.size(); i++) {
+            curr_term = root_node -> words[i];
+            // in tree
+            if (term == curr_term) {
+                return false;
             }
-            // check for when next value greater, list is in ascending order, so corresponding child
-            //pointer will be the one to recurse down
-            if (root-> words[i] > term) {
-                if (root-> children[i] != nullptr) {
-                    return insert_recurse(term, defs, root-> children[i]);
-                }
-                // means root has no children, if not 19 vals, insert at root
-                if (root-> n <= 19) {
-                    root-> words.insert(root->words.begin() + i, term);
-                    root-> definitions.insert(root->definitions.begin() + i, defs);
-                    root-> n++;
-                    return true;
-                }
-                // add value to node and call split
-                root-> words.insert(root->words.begin() + i, term);
-                root-> definitions.insert(root->definitions.begin() + i, defs);
-                root-> n++;
-                split(root);
+            // first greater term .insert inserts before current index, correct spot for new term/def
+            if (term < curr_term) {
+                root_node ->words.insert(root_node->words.begin() + i, term);
+                root_node -> definitions.insert(root_node-> definitions.begin() + i, defs);
+                // check if node now overfull
                 return true;
             }
         }
-
-        // means greater than all in the list, recurse with rightmost pointer (n value)
-        if (root-> children[root-> n ] != nullptr) {
-            return insert_recurse(term, defs, root-> children[root-> n]);
-        }
-
-        // means root has no children, if not 19 vals, insert at root
-        if (root-> n <= 19) {
-            root-> words.insert(root->words.begin() + root->n , term);
-            // inserts before n, so at last index
-            root-> definitions.insert(root->definitions.begin() + root-> n, defs);
-            root-> n++;
-            return true;
-        }
-        root-> words.insert(root->words.begin() + root->n , term);
-        // inserts before n, so at last index
-        root-> definitions.insert(root->definitions.begin() + root-> n, defs);
-        root-> n++;
-        split(root);
+        root_node -> words.push_back(term);
+        root_node -> definitions.push_back(defs);
         return true;
-
-
     }
 }
-//*****************END_OF_INSERT*****************************************************************************
-//*****************INSERT_RECURSE****************************************************************************
-//INPUTS: takes in term to insert, vector of definitions corresponding to the term, and node currently at, b_node*
-//Returns boolean, whether successful.
-//Description, recurses through tree to find correct spot to insert
-bool b_tree::insert_recurse(std::string term, std::vector<std::string> &defs, b_node *root_node) {
-    for (int i = 0; i < root_node->n; i++) {
-        if (root_node->words[i] == term) {
-            for (const auto& def : defs) {
-                root_node->definitions[i].push_back(def);
-            }
-            return true;
-        }
-        if (root_node-> words[i] > term) {
-            if (root_node-> children[i] != nullptr) { // first term greater, spot to insert
-                return insert_recurse(term, defs, root_node-> children[i]);
-            }
-            if (root_node -> n <= 19) {
-                root_node-> words.insert(root_node->words.begin() + i, term);
-                root_node-> definitions.insert(root_node->definitions.begin() + i, defs);
-                root_node-> n++;
-                return true;
-            }
-            // node has max values, needs to split. Insert word and definition, call split
-            root_node-> words.insert(root_node->words.begin() + i, term);
-            root_node-> definitions.insert(root_node->definitions.begin() + i, defs);
-            root_node-> n++;
-            split(root_node);
-            return true;
-        }
+//************************SPLIT_FUNCTION********************************************************************
+// Inputs: takes in parent pointer and index of child to insert at
+// Returns: N/A
+// Description: when node overfull, split called in insert recurse splits node into new node
+void b_tree::split(b_node *parent, const int index) {
+    // median, t-1 is median, since num terms is 2t
+    int mid = t-1;
+    // make pointer to child node, avoids messy arrows
+    b_node* child = parent -> children[index];
+    // extract mid_term, mid def from appropriate child
+    std::string mid_term = child  ->words[mid];
+    std::vector<std::string> mid_defs = child ->definitions[mid];
+    // make new right node
+    b_node *right = new b_node();
+    // assign right half of words from child to new right node, starts one past med, goes to end
+    right -> words.assign(child -> words.begin() + mid + 1,child -> words.end());
+    right -> definitions.assign(child -> definitions.begin() + mid + 1,child -> definitions.end());
+    // we know node has terms, but if it doesn't have children (leaf node) .empty will crash
+    if (!child -> children.empty()) {
+        right -> children.assign(child -> children.begin() + mid + 1,child -> children.end());
     }
-    // got through for loop, if greater pointer, recurse to it, otherwise add if space
-    if (root_node -> children[root_node->n] == nullptr) {
-        if (root_node -> n <= 19) {
-            root_node-> words.push_back(term);
-            root_node-> definitions.push_back(defs);
-            root_node-> n++;
-            return true;
-        }
-        // add and split, similar to others.
-            root_node-> words.push_back(term);
-            root_node-> definitions.push_back(defs);
-            root_node-> n++;
-            split(root_node);
-            return true;
+    // erase items from existing child median included
+    child -> words.erase(child -> words.begin() + mid ,child -> words.end());
+    child -> definitions.erase(child -> definitions.begin() + mid ,child -> definitions.end());
+    // .empty also crashes if node has no children
+    if (!child -> children.empty()) {
+        child -> children.erase(child -> children.begin() + mid +1,child -> children.end());
     }
-    return insert_recurse(term, defs, root_node->children[root_node->n]);
-
-
+    // insert median to parent and right as child past left
+    parent -> words.insert(parent-> words.begin() + index ,mid_term);
+    parent -> definitions.insert(parent-> definitions.begin() + index ,mid_defs);
+    // add 1 so child is right of median term, fits b_ tree structure
+    parent -> children.insert(parent -> children.begin() + index + 1 ,right);
 }
-//*****************SEARCH**********************************************************************
-//Inputs: term to search
-//Returns definition vector corresponding to the term
-// only calls search recurse so there is an easy way to call function with just term
-std::vector<std::string> b_tree::search(std::string term) {
-    // all checking occurs in recursive
-    levels = 0;
+//**********************END_OF_SPLIT**************************************************************
+//**********************SEARCH_FUNCTION***********************************************************
+//Inputs: term, passed by reference to search
+// Returns: result of search recurse, definition of term, if found. Empty vector if not
+// Description: wrapper function so main doesn't have to pass in root as well as term
+std::vector<std::string> b_tree::search(const std::string & term) {
     return search_recurse(term, root);
 }
-//***************END_OF_SEARCH******************************************************************
-//***************SEARCH_RECURSE*****************************************************************
-//INPUTS: takes in term, b_node* recursing through tree to find correct spot
-//Returns vector of defs corresponding to term, most of the body of the search functionality contained here
-std::vector<std::string> b_tree::search_recurse(std::string term, b_node *root_node) {
-    // if root is null and val hasn't been found, return empty vector
+//********************END_OF_SEARCH**************************************************************
+//********************SEARCH_RECURSE*************************************************************
+//Inputs: term to find, node currently at
+//Returns: vector of definitions, if found, empty vector if not
+//Description: recurses through tree, down correct path of nodes, returns corresponding vector of defs if term in tree
+std::vector<std::string> b_tree::search_recurse(const std::string & term, b_node *root_node) {
+    // cannot exist and avoids any dereferencing
     if (root_node == nullptr) {
         return {};
     }
-    // not null, search through values, find right place
-        for (int i = 0; i < root_node->n; i++) {
-            if (root_node-> words[i] == term) { // equal condition, return corresponding def
-                return root_node-> definitions[i];
-            }
-            if (root_node-> words[i] > term) { // greater, means first term that's greater, right spot
-                if (root_node-> children[i] != nullptr) {
-                    // recurse through corresponding child
-                    return search_recurse(term,root_node->children[i]);
-                }
-                return {};
+    for (int i = 0; i < root_node -> words.size(); i++) {
+        // check for tree empty
+        if (term == root_node -> words[i]) {
+            return root_node -> definitions[i];
+        }
+        if (term < root_node -> words[i]) {
+            // avoid undefined behavior if child doesn't exist
+            if (!root_node -> children.empty()) {
+                return search_recurse(term, root_node -> children[i]);
             }
         }
-    // got through whole list, should be last pointer
-        if (root_node->children[root_node->n] == nullptr) { // no last pointer, val not in list
-            return {};
-        }
-        // recurse through greater than pointer
-    levels++;
-    return search_recurse(term,root_node->children[root_node->n]);
+    }
+    if (root_node -> children.empty()) {
+        // leaf node and key not found, not in tree
+        return {};
+    }
+    return search_recurse(term, root_node -> children[root_node->children.size() -1]);
 }
-//********************SPLIT_FUNCTION***********************************************************************
-//Inputs: b_node*, node to start splitting at
-//Returns nothing
-// Description: only way to create new nodes, split takes a node with too many values,
-// finds the median value, and moves it up.
-void b_tree::split(b_node *root_node) {
-    if (root_node == nullptr) {
-        return;
-    }
-    if (root_node->n <= 19) {
-        return;
-    }
-
-    if (root_node == root) {
-        int med = root_node->n / 2;
-        std::string med_term = root_node->words[med];
-        root->words.erase(root->words.begin() + med);
-        std::vector<std::string> med_def = root->definitions[med];
-        root->definitions.erase(root->definitions.begin() + med);
-        root->n--;
-
-        b_node *tmp = new b_node();
-        tmp->words.push_back(med_term);
-        tmp->definitions.push_back(med_def);
-        tmp->n = 1;
-
-        b_node *right = new b_node();
-        right->n = 0;
-
-        int end = root->n;
-        for (int i = med; i < end; i++) {
-            right->words.push_back(root->words[med]);
-            right->definitions.push_back(root->definitions[med]);
-            right->children[right->n] = root->children[med + 1];
-            if (right->children[right->n] != nullptr) {
-                right->children[right->n]->parent = right;
-            }
-            root->children[med + 1] = nullptr;
-            right->n++;
-            root->words.erase(root->words.begin() + med);
-            root->definitions.erase(root->definitions.begin() + med);
-            root->n--;
-        }
-
-        right->children[right->n] = root->children[end];
-        if (right->children[right->n] != nullptr) {
-            right->children[right->n]->parent = right;
-        }
-        root->children[end] = nullptr;
-
-        root->parent = tmp;
-        right->parent = tmp;
-        tmp->children[0] = root;
-        tmp->children[1] = right;
-        root = tmp;
-    }
-    else {
-        int med = root_node->n / 2;
-        std::string med_term = root_node->words[med];
-        root_node->words.erase(root_node->words.begin() + med);
-        std::vector<std::string> med_def = root_node->definitions[med];
-        root_node->definitions.erase(root_node->definitions.begin() + med);
-        root_node->n--;
-
-        b_node *right = new b_node();
-        right->n = 0;
-
-        int end = root_node->n;
-        for (int i = med; i < end; i++) {
-            right->words.push_back(root_node->words[med]);
-            right->definitions.push_back(root_node->definitions[med]);
-            right->children[right->n] = root_node->children[med + 1];
-            if (right->children[right->n] != nullptr) {
-                right->children[right->n]->parent = right;
-            }
-            root_node->children[med + 1] = nullptr;
-            right->n++;
-            root_node->words.erase(root_node->words.begin() + med);
-            root_node->definitions.erase(root_node->definitions.begin() + med);
-            root_node->n--;
-        }
-
-        right->children[right->n] = root_node->children[end];
-        if (right->children[right->n] != nullptr) {
-            right->children[right->n]->parent = right;
-        }
-        root_node->children[end] = nullptr;
-        right->parent = root_node->parent;
-
-        // find root_node's position in parent's children array
-        int node_pos = -1;
-        for (int i = 0; i <= root_node->parent->n; i++) {
-            if (root_node->parent->children[i] == root_node) {
-                node_pos = i;
-                break;
-            }
-        }
-
-        // insert med_term at node_pos in parent
-        root_node->parent->words.insert(root_node->parent->words.begin() + node_pos, med_term);
-        root_node->parent->definitions.insert(root_node->parent->definitions.begin() + node_pos, med_def);
-        root_node->parent->n++;
-
-        // shift children right from the end down to node_pos+1 to make room for right
-        for (int i = root_node->parent->n; i > node_pos + 1; i--) {
-            root_node->parent->children[i] = root_node->parent->children[i - 1];
-        }
-        // place right child immediately after root_node
-        root_node->parent->children[node_pos + 1] = right;
-
-        // recurse up
-        split(root_node->parent);
-    }
-}
-
 b_tree::~b_tree() {
     destroy(root);
 }
